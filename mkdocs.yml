@@ -1,0 +1,100 @@
+site_name: JIRA API Python Package
+site_description: A comprehensive Python package for interacting with Jira Cloud REST API v3
+site_author: Carlos Marte
+site_url: https://carlosmarte.github.io/jira-api-module/
+
+repo_name: carlosmarte/jira-api-module
+repo_url: https://github.com/carlosmarte/jira-api-module
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_root_heading: true
+            show_source: true
+            heading_level: 2
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+    - Configuration: getting-started/configuration.md
+  - User Guide:
+    - Direct Import: user-guide/direct-import.md
+    - Command Line: user-guide/cli.md
+    - REST Server: user-guide/server.md
+    - SDK Client: user-guide/sdk.md
+  - Examples:
+    - Basic Usage: examples/basic-usage.md
+    - Advanced Usage: examples/advanced-usage.md
+    - Integration Examples: examples/integrations.md
+  - API Reference:
+    - Core Client: api-reference/core.md
+    - Models: api-reference/models.md
+    - Services: api-reference/services.md
+    - SDK: api-reference/sdk.md
+    - CLI: api-reference/cli.md
+    - Server: api-reference/server.md
+    - Exceptions: api-reference/exceptions.md
+  - Development:
+    - Contributing: development/contributing.md
+    - Testing: development/testing.md
+    - Release Notes: development/changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/carlosmarte/jira-api-module
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/jira-api/
+
+copyright: Copyright &copy; 2025 Carlos Marte
