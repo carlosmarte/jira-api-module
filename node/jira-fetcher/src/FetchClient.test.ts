@@ -196,57 +196,7 @@ describe("FetchClient", () => {
     });
   });
 
-  describe("transformRequest", () => {
-    it("should transform request URL and init", async () => {
-      const client = new FetchClient({
-        fetchAdapter: mockAdapter,
-        transformRequest: (url, init) => [
-          url + "?transformed=true",
-          {
-            ...init,
-            headers: { ...init.headers, Authorization: "Bearer token" },
-          },
-        ],
-      });
-
-      mockAdapter.mockResponse({ success: true });
-
-      await client.request("https://api.example.com/data");
-
-      const mock = mockAdapter.getMock();
-      expect(mock).toHaveBeenCalledWith(
-        "https://api.example.com/data?transformed=true",
-        expect.objectContaining({
-          headers: expect.objectContaining({
-            Authorization: "Bearer token",
           }),
-        })
-      );
-    });
-
-    it("should support async transformRequest", async () => {
-      const client = new FetchClient({
-        fetchAdapter: mockAdapter,
-        transformRequest: async (url, init) => {
-          await new Promise((resolve) => setTimeout(resolve, 10));
-          return [url, { ...init, headers: { "X-Async": "true" } }];
-        },
-      });
-
-      mockAdapter.mockResponse({ success: true });
-
-      await client.request("https://api.example.com/data");
-
-      const mock = mockAdapter.getMock();
-      expect(mock).toHaveBeenCalledWith(
-        "https://api.example.com/data",
-        expect.objectContaining({
-          headers: expect.objectContaining({ "X-Async": "true" }),
-        })
-      );
-    });
-  });
-
   describe("transformResponse", () => {
     it("should transform response", async () => {
       const client = new FetchClient({

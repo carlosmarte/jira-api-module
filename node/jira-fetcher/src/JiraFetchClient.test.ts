@@ -72,6 +72,23 @@ describe("JiraFetchClient", () => {
         expect.any(Object)
       );
     });
+
+    it("should preserve base URL pathname with simple concatenation", async () => {
+      const client = new JiraFetchClient({
+        baseUrl: "https://jira.example.com/context",
+        fetchClientOptions: { fetchAdapter: mockAdapter },
+      });
+
+      mockAdapter.mockResponse({ success: true });
+
+      await client.get("/rest/api/2/issue/TEST-1");
+
+      const mock = mockAdapter.getMock();
+      expect(mock).toHaveBeenCalledWith(
+        "https://jira.example.com/context/rest/api/2/issue/TEST-1",
+        expect.any(Object)
+      );
+    });
   });
 
   describe("request method", () => {

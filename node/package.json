@@ -11,7 +11,10 @@
     "generate-api-docs": "node --loader ts-node/esm .bin/generate-api-docs.ts",
     "build:fetcher": "npm run build --workspace=jira-fetcher",
     "clean:fetcher": "npm run clean --workspace=jira-fetcher",
-    "build:all": "npm run build:fetcher"
+    "build:all": "npm run build:fetcher",
+    "test": "npm test --workspace=jira-fetcher",
+    "test:watch": "npm run test:watch --workspace=jira-fetcher",
+    "test:coverage": "npm run test:coverage --workspace=jira-fetcher"
   },
   "keywords": [
     "jira",

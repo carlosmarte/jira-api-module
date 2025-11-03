@@ -32,15 +32,6 @@ export interface RetryHandler {
 }
 
 /**
- * Request transformation hook.
- * Allows modifying the request before it's sent.
- */
-export type TransformRequest = (
-  url: string,
-  init: RequestInit
-) => Promise<[string, RequestInit]> | [string, RequestInit];
-
-/**
  * Response transformation hook.
  * Allows modifying the response after it's received.
  */
@@ -62,8 +53,6 @@ export interface FetchClientOptions {
   retryHandler?: RetryHandler;
   /** Optional: Request timeout in milliseconds (default: 10000) */
   timeoutMs?: number;
-  /** Optional: Transform request before sending */
-  transformRequest?: TransformRequest;
   /** Optional: Transform response after receiving */
   transformResponse?: TransformResponse;
 }

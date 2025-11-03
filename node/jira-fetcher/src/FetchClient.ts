@@ -28,15 +28,13 @@ export class FetchClient {
       rateLimitAdapter,
       requestCache,
       retryHandler,
-      transformRequest,
       transformResponse,
       timeoutMs = 10_000,
     } = this.options;
 
-    // Apply request transformation
-    const [finalUrl, finalInit] = transformRequest
-      ? await transformRequest(url, init)
-      : [url, init];
+    // Use URL and init as-is (no transformation)
+    const finalUrl = url;
+    const finalInit = init;
 
     // Check cache for GET requests
     const cacheKey = `${finalInit.method ?? "GET"}:${finalUrl}`;

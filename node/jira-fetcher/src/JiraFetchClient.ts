@@ -62,7 +62,8 @@ export class JiraFetchClient {
   }
 
   /**
-   * Builds the full URL with path and query parameters.
+   * Builds the full URL with path and query parameters using simple concatenation.
+   * No URL rewriting - just combines base + path as strings.
    */
   private buildUrl(config: JiraRequestConfig): string {
     let path = config.path;
@@ -92,26 +93,30 @@ export class JiraFetchClient {
       );
     }
 
-    // Build the full URL
-    const url = new URL(path, this.baseUrl);
+    // Build the full URL with simple string concatenation (no URL rewriting)
+    let url = `${this.baseUrl}${path}`;
 
     // Add query parameters
     if (config.queryParams) {
+      const queryParts: string[] = [];
       for (const [key, value] of Object.entries(config.queryParams)) {
         if (value !== undefined) {
           if (Array.isArray(value)) {
             // Handle array query parameters
             for (const item of value) {
-              url.searchParams.append(key, String(item));
+              queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(item))}`);
             }
           } else {
-            url.searchParams.append(key, String(value));
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`);
           }
         }
       }
+      if (queryParts.length > 0) {
+        url += `?${queryParts.join("&")}`;
+      }
     }
 
-    return url.toString();
+    return url;
   }
 
   /**
