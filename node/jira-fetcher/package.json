@@ -1,0 +1,53 @@
+{
+  "name": "@thinkeloquent/jira-fetcher-core",
+  "version": "1.0.0",
+  "description": "Generic, composable JIRA API fetcher with pluggable fetch adapter support",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "keywords": [
+    "jira",
+    "api",
+    "fetch",
+    "rest",
+    "data-center",
+    "adapter",
+    "http-client"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "undici": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vitest/ui": "^4.0.6",
+    "happy-dom": "^20.0.10",
+    "typescript": "^5.6.0",
+    "vitest": "^4.0.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "docs"
+  ]
+}

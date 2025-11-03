@@ -4,8 +4,14 @@
   "description": "Jira Software Data Center REST API Module",
   "main": "index.js",
   "type": "module",
+  "workspaces": [
+    "jira-fetcher"
+  ],
   "scripts": {
-    "generate-api-docs": "node --loader ts-node/esm .bin/generate-api-docs.ts"
+    "generate-api-docs": "node --loader ts-node/esm .bin/generate-api-docs.ts",
+    "build:fetcher": "npm run build --workspace=jira-fetcher",
+    "clean:fetcher": "npm run clean --workspace=jira-fetcher",
+    "build:all": "npm run build:fetcher"
   },
   "keywords": [
     "jira",

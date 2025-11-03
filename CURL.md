@@ -68,6 +68,7 @@ Personal Access Tokens use Bearer authentication:
 ```bash
 # Test authentication with PAT - get current user
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -118,6 +119,7 @@ Get server information to verify JIRA is accessible:
 
 ```bash
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -156,6 +158,7 @@ curl -X GET \
 
 ```bash
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -192,6 +195,7 @@ curl -X GET \
 
 ```bash
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/user?username=jdoe"
@@ -211,6 +215,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/myself" | jq '.'
@@ -240,6 +245,7 @@ export no_proxy="localhost,127.0.0.1,.local,.company.com"
 
 # Make request with PAT (will automatically use proxy)
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/myself"
@@ -250,6 +256,7 @@ curl -X GET \
 ```bash
 # Using -x or --proxy flag with PAT
 curl -X GET \
+  -k \
   -x http://proxy.company.com:8080 \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
@@ -268,6 +275,7 @@ curl -X GET \
 ```bash
 # Proxy with username and password + JIRA PAT
 curl -X GET \
+  -k \
   -x http://proxy.company.com:8080 \
   -U proxyuser:proxypass \
   -H "Authorization: Bearer $JIRA_PAT" \
@@ -276,6 +284,7 @@ curl -X GET \
 
 # Alternative: include credentials in proxy URL
 curl -X GET \
+  -k \
   -x http://proxyuser:proxypass@proxy.company.com:8080 \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
@@ -287,6 +296,7 @@ curl -X GET \
 ```bash
 # SOCKS4 proxy with PAT
 curl -X GET \
+  -k \
   --socks4 socks-proxy.company.com:1080 \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
@@ -341,6 +351,7 @@ curl -X GET \
 ```bash
 # Show detailed connection information with PAT
 curl -v \
+  -k \
   -x http://proxy.company.com:8080 \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
@@ -358,6 +369,7 @@ curl -v --trace-ascii - \
 ```bash
 # Set connection and max timeout
 curl -X GET \
+  -k \
   --connect-timeout 10 \
   --max-time 30 \
   -H "Authorization: Bearer $JIRA_PAT" \
@@ -370,6 +382,7 @@ curl -X GET \
 ```bash
 # Retry on connection failures (max 3 retries)
 curl -X GET \
+  -k \
   --retry 3 \
   --retry-delay 2 \
   --retry-max-time 60 \
@@ -383,6 +396,7 @@ curl -X GET \
 ```bash
 # Save response body to file with PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   -o jira-status.json \
@@ -403,6 +417,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/user/search?username=john&maxResults=50"
@@ -419,6 +434,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/project/PROJ"
@@ -435,6 +451,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/issue/PROJ-123"
@@ -455,6 +472,7 @@ ENCODED_JQL=$(echo "$JQL_QUERY" | jq -sRr @uri)
 
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/search?jql=$ENCODED_JQL&maxResults=50"
@@ -471,6 +489,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X POST \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
@@ -517,6 +536,7 @@ Get system-level configuration information:
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/application-properties"
@@ -527,6 +547,7 @@ curl -X GET \
 ```bash
 # With PAT
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/project"
@@ -545,6 +566,7 @@ Requires administrator permissions:
 ```bash
 # With PAT (admin required)
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   -H "Content-Type: application/json" \
   "$JIRA_BASE_URL/rest/api/2/configuration"
@@ -561,6 +583,7 @@ curl -X GET \
 
 # Detailed health check (may require authentication)
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   "$JIRA_BASE_URL/rest/api/2/status"
 ```
@@ -696,6 +719,7 @@ curl -I "$JIRA_BASE_URL"
 
 # Test with verbose output (PAT)
 curl -v \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   "$JIRA_BASE_URL/rest/api/2/myself"
 
@@ -715,6 +739,7 @@ curl -X GET \
 
 # Then try with PAT to see exact error
 curl -v -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   "$JIRA_BASE_URL/rest/api/2/myself"
 ```
@@ -725,6 +750,7 @@ curl -v -X GET \
 # JIRA v10.3.8 supports both API v2 and v3
 # Check which API versions are available
 curl -X GET \
+  -k \
   -H "Authorization: Bearer $JIRA_PAT" \
   "$JIRA_BASE_URL/rest/api/2/serverInfo"
 
