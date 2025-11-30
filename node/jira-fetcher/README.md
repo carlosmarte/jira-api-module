@@ -327,6 +327,39 @@ MIT
 
 Contributions are welcome! Please open an issue or pull request.
 
+### Development Workflow
+
+This project uses [Changesets](https://github.com/changesets/changesets) for version management and publishing.
+
+When making changes:
+
+1. **Make your changes** to the codebase
+2. **Create a changeset** describing your changes:
+   ```bash
+   npm run changeset
+   ```
+   - Select the package(s) to version
+   - Choose the version bump type (major/minor/patch)
+   - Write a summary of your changes
+
+3. **Commit the changeset** along with your code changes
+4. **Submit a pull request** with your changes and the changeset file
+
+### Available Scripts
+
+```bash
+# Create a new changeset
+npm run changeset
+
+# Update package versions based on changesets (maintainers only)
+npm run version
+
+# Build and publish to npm (maintainers only)
+npm run release
+```
+
+The changeset file will be used to automatically generate changelogs and determine version bumps when your PR is merged.
+
 ## Support
 
 - **Issues**: [GitHub Issues](https://github.com/your-org/jira-fetcher/issues)

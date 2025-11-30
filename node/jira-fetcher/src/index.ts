@@ -8,7 +8,6 @@ export type {
   RateLimitAdapter,
   RequestCache,
   RetryHandler,
-  TransformRequest,
   TransformResponse,
   FetchClientOptions,
   HttpMethod,

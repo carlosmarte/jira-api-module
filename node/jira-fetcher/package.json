@@ -1,6 +1,6 @@
 {
   "name": "@thinkeloquent/jira-fetcher-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generic, composable JIRA API fetcher with pluggable fetch adapter support",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

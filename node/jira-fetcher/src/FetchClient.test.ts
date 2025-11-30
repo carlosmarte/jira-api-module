@@ -196,7 +196,6 @@ describe("FetchClient", () => {
     });
   });
 
-          }),
   describe("transformResponse", () => {
     it("should transform response", async () => {
       const client = new FetchClient({
@@ -411,10 +410,6 @@ describe("FetchClient", () => {
         rateLimitAdapter: rateLimiter,
         retryHandler,
         timeoutMs: 5000,
-        transformRequest: (url, init) => [
-          url,
-          { ...init, headers: { "X-Custom": "header" } },
-        ],
         transformResponse: async (response) => {
           const data = await response.json();
           return new Response(JSON.stringify({ wrapped: data }), response);
